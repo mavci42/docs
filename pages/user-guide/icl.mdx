@@ -101,13 +101,14 @@ You can specify either `port`, `port_range`, or both, but make sure to specify a
 The `expose` parameter is a list that defines the connections allowed to the service. 
 Each entry in this list is a map that can include one or more of the following fields:
 
-| Field          | Required           | Description                                                                                                             |
-|----------------|--------------------|-------------------------------------------------------------------------------------------------------------------------|
-| `port`         | Yes                | Specifies the container port that should be made accessible.                                                            |
-| `as`           | No                 | Defines an alternative port number to expose the container port as.                                                     |
-| `accept`       | No                 | Lists the hostnames for which connections should be accepted.                                                           |
-| `proto`        | No                 | Indicates the protocol type. Can be set to either `tcp` or `udp`.                                                       |
-| `to`           | No                 | Enumerates the entities permitted to connect to this port. Refer to the `expose.to` section for more details.  |
+| Field                  | Required           | Description                                                                                                             |
+|------------------------|--------------------|-------------------------------------------------------------------------------------------------------------------------|
+| `port`                 | Yes                | Specifies the container port that should be made accessible.                                                            |
+| `as`                   | No                 | Defines an alternative port number to expose the container port as.                                                     |
+| `accept`               | No                 | Lists the hostnames for which connections should be accepted.                                                           |
+| `proto`                | No                 | Indicates the protocol type. Can be set to either `tcp` or `udp`.                                                       |
+| `to`                   | No                 | Enumerates the entities permitted to connect to this port. Refer to the `expose.to` section for more details.           |
+| `use_public_port`      | No                 | If set to true, the public port will be used instead of the private port.                                               |
 
 Keep in mind, The `as` parameter determines the default `proto` value.
 

@@ -250,7 +250,7 @@ services:
 profiles:
   name: hello-world
   mode: provider
-  duration: 2min
+  duration: 1h
   tier:
     - community
   compute:
@@ -268,8 +268,8 @@ profiles:
         region: us-east
       pricing:
         web:
-          token: USDT
-          amount: 50
+          token: CST
+          amount: 1
 deployment:
   web:
     westcoast:
@@ -290,19 +290,21 @@ sphnctl deployment create gpu.yml
 Here is an example of how the result will look:
 
 ```sh
-Checking ballance for wallet: 0x2c11A76298A111B8cA8Db82205dc8f0A2688e6e8
-Validating SDL configuration.
-SDL validated.
-Sending configuration for provider matching.
-Create deployment tx: [Tx Hash]
-Waiting for providers to bid on the deployment order...
-Bid found.
+Validating ICL configuration.
+ICL validated.
+Sending configuration for Fizz Node matching.
+Duration of the deployment: 1h 
+Checking token deposit balance
+Deposit balance is sufficient: 16.537042 CST 
+Deployment order created: 0x451e28ec9006601058f357617a9b3b55db2d0736143e67297708c20df467ae77
+Waiting for Provider to bid on the deployment order...
+Bid found. 
 Order matched successfully.
 Deployment created using wallet 0x2c11A76298A111B8cA8Db82205dc8f0A2688e6e8
- lid: 44
- provider: 0x6634d41cccBD1E1576Ed4c6226832521A66bF874
- agreed price: 158747943694
-Sending the manifest for deployment…
+ Lid: 44
+ Provider: 0x6634d41cccBD1E1576Ed4c6226832521A66bF874
+ Agreed price per hour: 0.1232434
+Sending manifest to Provider...
 Deployment manifest sent, waiting for acknowledgment.
 Deployment is finished.
 ```
@@ -327,22 +329,23 @@ sphnctl deployment get --lid 44
 Here is an example of how the result will look:
 
 ```sh
-Status of the deployment ID: [Lease ID]
-Deployment details:
- Status:  Matched
- Provider:  avaaaa
- Price per hour:  1.21222
- Start time:  2024-07-25T10:10:12Z
+Status of the deployment ID: 986 
+Deployment on-chain details:
+ Status: Matched
+ Provider: 0x3749384739874938473987493847398749384739
+ Price per hour: 0.23682805553062620001
+ Start time: 2025-02-01T12:05:40Z
+ Remaining time: 59min, 33sec
 
 Services running:
-  web
+  ollama-test
     URL: []
     Ports:
-      - provider.provider.devnetasphn.com:42100 -> 8888 (TCP)
-    Replicas: 1/1 available, 1 ready
-    Host URI: provider.devnetasphn.com
-    Region: us-east
-    IPs: []
+      - provider.abc.com:31068 -> 8080 (TCP)
+    Replicas: 0/1 available, 0 ready
+    Host URI: provider.abc.com
+    Region: us-west
+    IPs:
 ```
 
 ### Fetch Deployment Logs

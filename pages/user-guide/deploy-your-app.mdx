@@ -50,7 +50,7 @@ Once created, the wallet will be saved locally at `~/.spheron`. You can access t
 The newly created wallet will automatically be set as the current wallet. If needed, you can change the wallet by following the instructions in the [Changing Your Wallet](/user-guide/protocol-cli#changing-your-wallet) section.
 You can also export the private key of your newly generated wallet. Please follow the instructions given in [Export the Private Key of Wallet](/user-guide/protocol-cli#export-the-private-key-of-wallet).
 
-### Step 3: Get Some test tokens from the Faucet and ETH from the Faucet
+### Step 3: Get Some test tokens from the Team and ETH from the Faucet
 
 1. Visit the [Spheron Faucet](https://faucet.spheron.network/). 
 
@@ -61,42 +61,35 @@ You can also export the private key of your newly generated wallet. Please follo
    - Enter the wallet address of the wallet you generated in the previous section.
    - Click the "Send Token" button to start the transaction.
 
-3. Next, get some USDT tokens for testing deployment:
-   - Select USDT from the token options.
-   - Enter the same wallet address you used for ETH.
-   - Click on the "Send Token" button.
+3. Wait for the transaction to be confirmed.
 
-4. Wait for both transactions to be confirmed.
+4. Reach out to the Spheron team on Discord's #build-chat channel to get some USDT, USDC, WETH, or CST tokens.
 
 5. Check if you got the test ETH and USDT tokens in your wallet:
 ```
-sphnctl wallet balance --token USDT
+sphnctl wallet balance --token CST
 ```
 This will show both USDT and ETH balances in your wallet.
 
 <Callout type="info">
-**Note:** If you have chosen a different token from the faucet, to check its balance you need to pass the name of that token in all caps.
+**Note:** 
+- You won't get USDT, USDC, WETH, or CST tokens from the Spheron Faucet. You will need to reach out to the Spheron team to get these tokens on the Discord's #build-chat channel.
+- Make sure to mention what you are building and how you are using Spheron Protocol, which compute or GPU you want to use and the duration you want to use it for. And finally, mention the wallet address you want to get the tokens in.
 </Callout>
 
-### Step 4: Get Some Arbitrum Sepolia ETH and Bridge to Spheron Chain (Optional)
+### Step 4: Get Some Base Sepolia ETH from other faucets (Optional)
 <Callout type="info">
 **Note:** This step is only necessary if you could not get ETH from the Spheron faucet in Step 3. You can skip this step if you successfully obtained ETH from the Spheron faucet.
 </Callout>
 
 In case you need an alternative source of ETH, you can obtain some on the Arbitrum Sepolia chain from the following faucets:
 
-| Faucet Operator    | Faucet URL                                            | Chain             |
-|--------------------|-------------------------------------------------------|-------------------|
-| QuickNode          | https://faucet.quicknode.com/arbitrum/sepolia         | Arbitrum Sepolia  |
-| Alchemy            | https://www.alchemy.com/faucets/arbitrum-sepolia      | Arbitrum Sepolia  |
-| Chainlink          | https://faucets.chain.link/arbitrum-sepolia           | Arbitrum Sepolia  |
-| LearnWeb3          | https://learnweb3.io/faucets/arbitrum_sepolia/        | Arbitrum Sepolia  |
-
-Once you have obtained ETH on the Arbitrum Sepolia chain, you can use our bridge to transfer the ETH token to the Spheron chain. Here is the bridge URL for bridging the ETH token:
-
-[Spheron Bridge](https://spheron-devnet-eth.bridge.caldera.xyz/)
-
-After bridging, check your balance on the Spheron chain to ensure the transfer was successful.
+| Faucet Operator     | Faucet URL                                                      | Chain             |
+|---------------------|-----------------------------------------------------------------|-------------------|
+| QuickNode           | https://faucet.quicknode.com/base/sepolia                       | Base Sepolia  |
+| Alchemy             | https://www.alchemy.com/faucets/base-sepolia                    | Base Sepolia  |
+| Chainlink           | https://faucets.chain.link/base-sepolia                         | Base Sepolia  |
+| Ethereum Foundation | https://www.ethereum-ecosystem.com/faucets/base-sepolia         | Base Sepolia  |
 
 ### Step 5: Deposit some token to Your Escrow Balance
 
@@ -105,14 +98,14 @@ Depositing your tokens into the escrow is the first step to deploying your app o
 1. Deposit USDT / any other token to the escrow wallet:
 
 ```
-sphnctl payment deposit --amount 10 --token USDT
+sphnctl payment deposit --amount 10 --token CST
 ```
 Here, the amount must be in the full precision of the token. To determine the precision of the token you are depositing, please refer to the [Supported Payment Tokens](/user-guide/supports#supported-payment-tokens) section.
 
 2. Now check if you have a balance in an unlocked state in your wallet:
 
 ```
-sphnctl wallet balance --token USDT
+sphnctl wallet balance --token CST
 ```
 
 <Callout type="info">
@@ -136,7 +129,7 @@ You can specify the mode in your ICL configuration under the `profiles` section.
 ```yaml
 profiles:
   name: hello-world
-  duration: 2min
+  duration: 1h
   mode: provider  # or 'fizz' for Fizz Mode
   tier:
     - community
@@ -162,7 +155,7 @@ services:
       - TEST=test
 profiles:
   name: hello-world
-  duration: 2min
+  duration: 1h
   mode: provider # or 'fizz' for Fizz Mode
   tier:
     - community
@@ -181,8 +174,8 @@ profiles:
         region: us-east
       pricing:
         web:
-          token: USDT
-          amount: 50
+          token: CST
+          amount: 1
 deployment:
   web:
     westcoast:
