@@ -9,11 +9,11 @@ To understand the rewarding system for Fizz nodes, let's first understand how re
 
 Fizz nodes are incentivized with liveness points based on the resources they contribute to the network. This approach encourages participation and helps cover operational expenses (OpEx).
 
-- The liveness points are currently issued in FN (Fizz Node) Points until the launch of the $SPON token. These points are non-transferable.
+- The liveness points are currently issued in FN (Fizz Node) Points until team announces something else. These points are non-transferable.
 - The liveness point is issued every **ERA** (which is 24 hours) and will be accumulated in the Fizz node's wallet. 
 
 <Callout type="info">
-**Note:** Fizz node operators are advised to securely save their wallet address to avoid losing the points.
+**Note:** Fizz node operators are advised to securely save their wallet address to avoid losing the points. Alternatively, you can use a burner wallet to hold the points which will be used to claim the rewards. Please make sure to not get your wallet compromised.
 </Callout>
 
 Liveness points are determined based on the following factors:
@@ -143,22 +143,22 @@ We support almost all CPU types and continuously add support for new CPUs. This 
 
 Unlike provider nodes, Fizz nodes do not have a trust tiering system. The network assumes Fizz nodes are less reliable and suitable for specific use cases that don't require highly stable systems. However, there is still a minimum liveness requirement to receive points:
 
-- Fizz nodes must maintain at least 50% liveness within an ERA to receive points.
+- Fizz nodes must maintain at least 50% liveness within an ERA to receive points. i.e you need to be online for at least 12 hours in a 24 hour period to receive points.
 - If a Fizz node's liveness falls below 50% in an ERA, you will not accrue any points for that ERA.
 
 ### How Liveness is Calculated
 
 Liveness for Fizz nodes is calculated using a simple hourly challenge system:
 
-- Every hour, at a random time, the network checks if the Fizz node is live and operational.
+- Every hour, at multiple random times, the network checks if the Fizz node is live and operational.
+- The network will also check if your node is maintaining the latest version of fizz node both Fizz Node version and the CLI version. The latest version will change as team releases new versions. Please make sure to be active on the Spheron Discord server to get notified for the latest versions.
 - During this hourly check, the network also validates that the available resources (GPU VRAM, CPU, RAM, and Storage) match what was claimed during node registration, excluding resources currently being utilized.
 - If the node responds successfully to the challenge and passes the resource validation, it passes the liveness check for that hour.
 - If the node fails to respond or fails the resource validation, the liveness check for that hour fails.
-- There are 24 challenges in total for each ERA (24-hour period).
-- If a Fizz node fails 12 or more challenges in an ERA (50% or more), you will not accrue any points for that ERA.
+- If a Fizz node fails the minimun 50% of the challenges in an ERA (24 hrs), you will not accrue any points for that ERA.
 
 <Callout type="warning">
-**Important:** Ensure you verify your available resources in the dashboard after connecting your Fizz node. If the actual resources differ from what was claimed, update your setup and restart the node. Failing resource validation will result in failed liveness checks, leading to point slashing for the ERA if liveness falls below 50%.
+**Important:** Ensure you verify your available resources in the dashboard after connecting your Fizz node. If the actual resources differ from what was claimed, update your setup and restart the node. Failing resource validation will result in failed liveness checks, leading to point loss for the ERA if liveness falls below 50%.
 </Callout>
 
 This system ensures that Fizz nodes are incentivized to maintain both reasonable availability and accurate resource reporting without the stricter requirements placed on provider nodes.
