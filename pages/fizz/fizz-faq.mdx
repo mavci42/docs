@@ -340,7 +340,7 @@ Ensure:
 Check GPU utilization using `nvidia-smi`. Close other applications using the GPU to allow the node to detect resources properly.
 
 #### 32. Will my points decrease if I stop running the node?
-If resource verification was completed, points won’t decrease. Without verification, points will gradually reduce to zero.
+If resource verification was completed, points won't decrease. Without verification, points will gradually reduce to zero.
 
 #### 33. Why is GPU VRAM showing 0%?
 Ensure you have:
@@ -352,8 +352,8 @@ Reinstall drivers if needed.
 #### 34. Can GPU VRAM be manually adjusted?
 No, the node automatically detects VRAM.
 
-#### 35. Why can’t I change my gateway?
-Ensure your wallet is connected and you’ve accepted the wallet transaction message. If errors persist, switch to a different browser.
+#### 35. Why can't I change my gateway?
+Ensure your wallet is connected and you've accepted the wallet transaction message. If errors persist, switch to a different browser.
 
 #### 36. Why does Docker cause packet loss on my internet connection?
 Change the gateway to a closer location.
@@ -592,5 +592,43 @@ No. Fizz Nodes must run within the containerized environment provided by the Sph
 
 #### 105. Does Fizz Node require root access to run correctly?  
 Yes, root privileges are needed to ensure the node can manage the necessary resources and configurations.  
+
+#### 106. How do I upgrade my Fizz Node?
+1. Upgrade your CLI to the latest version.
+```bash
+curl -sL https://sphnctl.sh | bash  
+```
+This will update your CLI to the latest version.
+
+2. Now generate a new token by clicking on the "Generate Command" button on the Fizz dashboard.
+
+<Callout type="info">
+**Note:** If you see your generate button is disabled, you need to either confirm the resource update section or cancel it if you don't want to update the resources.
+</Callout>
+
+3. Run the following command to run the latest version of the Fizz Node.
+```bash
+sphnctl fizz start --token ...
+```
+This will start the latest version of the Fizz Node.
+
+4. Verify that the CLI and node versions are up-to-date by running the following command:
+```bash
+sphnctl fizz version
+```
+This will display the current version of the CLI and node.
+
+5. To check the logs of the Fizz Node, run the following command:
+```bash
+sphnctl fizz logs
+```
+This will display the logs of the Fizz Node.
+
+6. Now check your dashboard to see the updated version of the Fizz Node.
+
+<Callout type="info">
+**Note:** It might take a few minutes to update the node version on the dashboard.
+</Callout>
+
 
 <Navigation name="Fizz Node FAQ" />
